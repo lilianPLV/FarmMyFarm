@@ -1,5 +1,7 @@
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 public class Animal {
     private Land land;
@@ -9,5 +11,8 @@ public class Animal {
         this.land = land;
     }
 
-    
+    public void Planting_animal(MouseEvent mouseEvent) {
+        Pane cell = (Pane) mouseEvent.getSource();
+        
+    }
 }

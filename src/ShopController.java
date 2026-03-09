@@ -17,9 +17,9 @@ public class ShopController {
 
     @FXML
     public void buy_carrot() {
-        if (land.argent >= 2) {
-            land.nb_carrots += 1;
-            land.argent -= 2;
+        if (Land.argent >= 2) {
+            Land.nb_carrots += 1;
+            Land.argent -= 2;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -31,9 +31,9 @@ public class ShopController {
 
     @FXML
     public void buy_mais() {
-        if (land.argent >= 10) {
-            land.nb_mais += 1;
-            land.argent -= 10;
+        if (Land.argent >= 10) {
+            Land.nb_mais += 1;
+            Land.argent -= 10;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -45,9 +45,9 @@ public class ShopController {
 
     @FXML
     public void buy_ble() {
-        if (land.argent >= 50) {
-            land.nb_ble += 1;
-            land.argent -= 50;
+        if (Land.argent >= 50) {
+            Land.nb_ble += 1;
+            Land.argent -= 50;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -59,9 +59,9 @@ public class ShopController {
 
     @FXML
     public void sell_carrot() {
-        if (land.nb_carrots_take > 0) {
-            land.nb_carrots_take -= 1;
-            land.argent += 5;
+        if (Land.nb_carrots_take > 0) {
+            Land.nb_carrots_take -= 1;
+            Land.argent += 5;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -73,9 +73,9 @@ public class ShopController {
 
     @FXML
     public void sell_mais() {
-        if (land.nb_mais_take > 0) {
-            land.nb_mais_take -= 1;
-            land.argent += 12;
+        if (Land.nb_mais_take > 0) {
+            Land.nb_mais_take -= 1;
+            Land.argent += 12;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -87,9 +87,9 @@ public class ShopController {
 
     @FXML
     public void sell_ble() {
-        if (land.nb_ble_take > 0) {
-            land.nb_ble_take -= 1;
-            land.argent += 61;
+        if (Land.nb_ble_take > 0) {
+            Land.nb_ble_take -= 1;
+            Land.argent += 61;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -101,26 +101,26 @@ public class ShopController {
 
     private void updateShopMoney() {
         if (shopMoney != null) {
-            shopMoney.setText("Money: " + land.argent);
+            shopMoney.setText("Money: " + Land.argent);
         }
     }
 
     private void updateShopGraine() {
         if (shop_nb_carrot != null) {
-            shop_nb_carrot.setText("nb: " + land.nb_carrots);
+            shop_nb_carrot.setText("nb: " + Land.nb_carrots);
         }
         if (shop_nb_mais != null) {
-            shop_nb_mais.setText("nb: " + land.nb_mais);
+            shop_nb_mais.setText("nb: " + Land.nb_mais);
         }
         if (shop_nb_ble != null) {
-            shop_nb_ble.setText("nb: " + land.nb_ble);
+            shop_nb_ble.setText("nb: " + Land.nb_ble);
         }
     }
 
     public void sell_all_carrot() {
-        if (land.nb_carrots_take > 0) {
-            land.argent += land.nb_carrots_take * 5;
-            land.nb_carrots_take = 0;
+        if (Land.nb_carrots_take > 0) {
+            Land.argent += Land.nb_carrots_take * 5;
+            Land.nb_carrots_take = 0;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -131,9 +131,9 @@ public class ShopController {
     }
 
     public void sell_all_mais() {
-        if (land.nb_mais_take > 0) {
-            land.argent += land.nb_mais_take * 12;
-            land.nb_mais_take = 0;
+        if (Land.nb_mais_take > 0) {
+            Land.argent += Land.nb_mais_take * 12;
+            Land.nb_mais_take = 0;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
@@ -144,9 +144,9 @@ public class ShopController {
     }
 
     public void sell_all_ble() {
-        if (land.nb_ble_take > 0) {
-            land.argent += land.nb_ble_take * 61;
-            land.nb_ble_take = 0;
+        if (Land.nb_ble_take > 0) {
+            Land.argent += Land.nb_ble_take * 61;
+            Land.nb_ble_take = 0;
             land.updateMoney();
             updateShopMoney();
             updateShopGraine();
