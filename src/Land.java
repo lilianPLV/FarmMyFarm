@@ -17,16 +17,16 @@ import javafx.util.Duration;
 import java.util.Objects;
 import java.util.Random;
 
-public class Land1 {
+public class Land {
     public Random random = new Random();
-    public boolean boostGrowth = false;
-    public int nb_carrots = 0;
-    public int nb_carrots_take = 0;
-    public int nb_mais = 0;
-    public int nb_mais_take = 0;
-    public int nb_ble = 0;
-    public int nb_ble_take = 0;
-    public int argent = 25;
+    public static boolean boostGrowth = false;
+    public static int nb_carrots = 0;
+    public static int nb_carrots_take = 0;
+    public static int nb_mais = 0;
+    public static int nb_mais_take = 0;
+    public static int nb_ble = 0;
+    public static int nb_ble_take = 0;
+    public static int argent = 25;
     @FXML private CheckBox button_carrot;
     @FXML private CheckBox button_mais;
     @FXML private CheckBox button_ble;
@@ -110,6 +110,17 @@ public class Land1 {
         Parent root = loader.load();
         ShopController shopController = loader.getController();
         shopController.setLand(this);
+        Stage stage = new Stage();
+        stage.setTitle("Shop");
+        stage.setScene(new Scene(root, 770, 500));
+        stage.show();
+    }
+
+    public void animal(ActionEvent actionEvent) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Animal.fxml"));
+        Parent root = loader.load();
+        Animal animal = loader.getController();
+        animal.setLand(this);
         Stage stage = new Stage();
         stage.setTitle("Shop");
         stage.setScene(new Scene(root, 770, 500));

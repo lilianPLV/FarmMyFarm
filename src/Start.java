@@ -15,7 +15,7 @@ public class Start {
     private Button button_quit;
 
     public void play(ActionEvent actionEvent) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Land1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Land.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Land1");
         stage.setScene(new Scene(root, 770, 500));

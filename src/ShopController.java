@@ -4,14 +4,14 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ShopController {
-    private Land1 land;
+    private Land land;
     @FXML private Label shopMoney;
     @FXML private Button button_home;
     @FXML private Label shop_nb_carrot;
     @FXML private Label shop_nb_mais;
     @FXML private Label shop_nb_ble;
 
-    public void setLand(Land1 land) {
+    public void setLand(Land land) {
         this.land = land;
     }
 
