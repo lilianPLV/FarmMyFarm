@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Land">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Land">
    <children>
-      <Button fx:id="button_home" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="55.0" text="🏠">
+      <Button fx:id="button_home" layoutY="-14.0" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="55.0" text="🏠">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="button_shop" layoutX="670.0" mnemonicParsing="false" onAction="#shop" prefHeight="58.0" prefWidth="103.0" text="Shop">
+      <Button fx:id="button_shop" layoutX="675.0" layoutY="-13.0" mnemonicParsing="false" onAction="#shop" text="Shop">
          <font>
             <Font size="26.0" />
          </font>
       </Button>
-      <GridPane fx:id="champ1" gridLinesVisible="true" layoutX="63.0" layoutY="116.0" prefHeight="270.0" prefWidth="329.0">
+      <GridPane fx:id="champ1" gridLinesVisible="true" layoutX="40.0" layoutY="141.0" prefHeight="270.0" prefWidth="329.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,7 +40,7 @@
               <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
           </children>
       </GridPane>
-      <GridPane fx:id="champ2" disable="true" gridLinesVisible="true" layoutX="392.0" layoutY="116.0" prefHeight="270.0" prefWidth="329.0">
+      <GridPane fx:id="champ2" disable="true" gridLinesVisible="true" layoutX="412.0" layoutY="141.0" prefHeight="270.0" prefWidth="329.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -64,7 +64,7 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Button fx:id="unlock" disable="true" layoutX="505.0" layoutY="82.0" mnemonicParsing="false" onAction="#unlock" prefHeight="25.0" prefWidth="103.0" text="Unlock for 1k" />
+      <Button fx:id="unlock" disable="true" layoutX="525.0" layoutY="111.0" mnemonicParsing="false" onAction="#unlock" prefHeight="25.0" prefWidth="103.0" text="Unlock for 1k" />
        <GridPane fx:id="hotbar" gridLinesVisible="true" layoutX="92.0" layoutY="428.0" prefHeight="72.0" prefWidth="600.0">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -98,15 +98,33 @@
                </StackPane>
            </children>
        </GridPane>
-      <GridPane gridLinesVisible="true" layoutX="64.0" layoutY="53.0" prefHeight="58.0" prefWidth="436.0">
+      <GridPane fx:id="etable" gridLinesVisible="true" layoutX="41.0" layoutY="44.0" prefHeight="58.0" prefWidth="701.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+            <RowConstraints />
         </rowConstraints>
+          <children>
+              <Pane id="empty" onMouseClicked="#Animaling" style="-fx-background-color: #693501;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+              <Pane id="empty" onMouseClicked="#Animaling" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+              <Pane id="empty" onMouseClicked="#Animaling" style="-fx-background-color: #693501;" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+              <Pane id="empty" onMouseClicked="#Animaling" style="-fx-background-color: #693501;" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+              <Pane id="empty" onMouseClicked="#Animaling" style="-fx-background-color: #693501;" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+              <Pane id="empty" onMouseClicked="#Animaling" style="-fx-background-color: #693501;" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+          </children>
       </GridPane>
+      <Button fx:id="button_save" layoutX="-1.0" layoutY="453.0" mnemonicParsing="false" text="Saves" onAction="#saveGame">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShopController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShopController">
    <children>
       <Button fx:id="button_acheter_carrot" layoutX="286.0" mnemonicParsing="false" onAction="#buy_carrot" prefHeight="36.0" prefWidth="106.0" text="Acheter">
          <font>
@@ -17,7 +17,7 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Label fx:id="shopMoney" layoutX="14.0" layoutY="369.0" />
+      <Label fx:id="shopMoney" layoutX="14.0" layoutY="220.0" />
       <Button fx:id="button_sell_all_carrot" layoutX="523.0" mnemonicParsing="false" onAction="#sell_all_carrot" prefHeight="46.0" prefWidth="106.0" text="Vendre tout">
          <font>
             <Font size="15.0" />
@@ -121,17 +121,17 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label layoutX="297.0" layoutY="348.0" text="Vache">
+      <Label layoutX="297.0" layoutY="348.0" text="Vache:">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <Label layoutY="345.0" text="Mouton">
+      <Label layoutY="348.0" text="Mouton:">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <Label layoutX="159.0" layoutY="345.0" text="Poule">
+      <Label layoutX="159.0" layoutY="345.0" text="Poule:">
          <font>
             <Font size="31.0" />
          </font>

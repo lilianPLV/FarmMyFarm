@@ -2,7 +2,7 @@
 <project version="4">
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ProjetFinal" options="" />
+      <module name="ProjetFinal" options="--add-exports jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED" />
     </option>
   </component>
 </project>

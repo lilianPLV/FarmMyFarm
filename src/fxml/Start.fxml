@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="900.0" style="-fx-background-color: -blue;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Start">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="900.0" style="-fx-background-color: -blue;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Start">
    <children>
       <Pane layoutY="-4.0" prefHeight="328.0" prefWidth="900.0" style="-fx-background-color: black;">
          <children>
@@ -32,17 +32,12 @@
       </Pane>
       <Pane layoutY="318.0" prefHeight="402.0" prefWidth="900.0" style="-fx-background-color: black;">
          <children>
-            <Button fx:id="button_start" layoutX="326.0" layoutY="3.0" mnemonicParsing="false" onAction="#play" prefHeight="95.0" prefWidth="273.0" style="-fx-background-color: grey;" text="PLAY" textFill="WHITE">
+            <Button fx:id="button_saves" layoutX="359.0" layoutY="15.0" mnemonicParsing="false" onAction="#saves" prefHeight="85.0" prefWidth="207.0" style="-fx-background-color: grey;" text="SAVES" textFill="WHITE">
                <font>
                   <Font size="40.0" />
                </font>
             </Button>
-            <Button fx:id="button_saves" layoutX="359.0" layoutY="122.0" mnemonicParsing="false" onAction="#saves" prefHeight="85.0" prefWidth="207.0" style="-fx-background-color: grey;" text="SAVES" textFill="WHITE">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Button>
-            <Button fx:id="button_quit" layoutX="359.0" layoutY="243.0" mnemonicParsing="false" onAction="#quit" prefHeight="85.0" prefWidth="207.0" style="-fx-background-color: grey;" text="QUIT" textFill="WHITE">
+            <Button fx:id="button_quit" layoutX="359.0" layoutY="158.0" mnemonicParsing="false" onAction="#quit" prefHeight="85.0" prefWidth="207.0" style="-fx-background-color: grey;" text="QUIT" textFill="WHITE">
                <font>
                   <Font size="40.0" />
                </font>

@@ -1,4 +1,3 @@
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -43,6 +42,7 @@ public class ShopController {
             Land.nb_carrots += 1;
             Land.argent -= 2;
             land.updateMoney();
+            land.updateSeed();
             updateShopMoney();
             updateShopGraine();
         }
@@ -57,6 +57,7 @@ public class ShopController {
             Land.nb_mais += 1;
             Land.argent -= 10;
             land.updateMoney();
+            land.updateSeed();
             updateShopMoney();
             updateShopGraine();
         }
@@ -71,6 +72,49 @@ public class ShopController {
             Land.nb_ble += 1;
             Land.argent -= 50;
             land.updateMoney();
+            land.updateSeed();
+            updateShopMoney();
+            updateShopGraine();
+        }
+        else {
+            System.out.println("Pas assez d'argent");
+        }
+    }
+
+    public void buy_sheep() {
+        if (Land.argent >= 100) {
+            Land.nb_sheep += 1;
+            Land.argent -= 100;
+            land.updateMoney();
+            land.updateSeed();
+            updateShopMoney();
+            updateShopGraine();
+        }
+        else {
+            System.out.println("Pas assez d'argent");
+        }
+    }
+
+    public void buy_chicken() {
+        if (Land.argent >= 100) {
+            Land.nb_cow += 1;
+            Land.argent -= 100;
+            land.updateMoney();
+            land.updateSeed();
+            updateShopMoney();
+            updateShopGraine();
+        }
+        else {
+            System.out.println("Pas assez d'argent");
+        }
+    }
+
+    public void buy_cow() {
+        if (Land.argent >= 100) {
+            Land.nb_chicken += 1;
+            Land.argent -= 100;
+            land.updateMoney();
+            land.updateSeed();
             updateShopMoney();
             updateShopGraine();
         }
@@ -123,8 +167,8 @@ public class ShopController {
 
     @FXML
     public void sell_laine() {
-        if (Land.nb_ble_take > 0) {
-            Land.nb_ble_take -= 1;
+        if (Land.nb_laine > 0) {
+            Land.nb_laine -= 1;
             Land.argent += 61;
             land.updateMoney();
             updateShopMoney();
@@ -137,8 +181,8 @@ public class ShopController {
 
     @FXML
     public void sell_egg() {
-        if (Land.nb_ble_take > 0) {
-            Land.nb_ble_take -= 1;
+        if (Land.nb_egg > 0) {
+            Land.nb_egg -= 1;
             Land.argent += 61;
             land.updateMoney();
             updateShopMoney();
@@ -151,8 +195,8 @@ public class ShopController {
 
     @FXML
     public void sell_lait() {
-        if (Land.nb_ble_take > 0) {
-            Land.nb_ble_take -= 1;
+        if (Land.nb_lait > 0) {
+            Land.nb_lait -= 1;
             Land.argent += 61;
             land.updateMoney();
             updateShopMoney();
@@ -249,14 +293,5 @@ public class ShopController {
             land.updateMoney();
             stage.close();
         });
-    }
-
-    public void buy_sheep(ActionEvent actionEvent) {
-    }
-
-    public void buy_cow(ActionEvent actionEvent) {
-    }
-
-    public void buy_chicken(ActionEvent actionEvent) {
     }
 }
