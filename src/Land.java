@@ -29,7 +29,10 @@ public class Land {
     public static int nb_mais_take = 0;
     public static int nb_ble = 0;
     public static int nb_ble_take = 0;
-    public static int argent = 25;
+    public static int argent = 10000;
+    public static int nb_sheep = 0;
+    public static int nb_chicken = 0;
+    public static int nb_cow = 0;
     @FXML private Button unlock;
     @FXML private GridPane champ1;
     @FXML private GridPane champ2;
@@ -41,21 +44,25 @@ public class Land {
     @FXML private Label label_slot_carrot;
     @FXML private Label label_slot_mais;
     @FXML private Label label_slot_ble;
+    @FXML private StackPane slot_sheep;
+    @FXML private StackPane slot_chicken;
+    @FXML private StackPane slot_cow;
+    @FXML private Label label_slot_sheep;
+    @FXML private Label label_slot_chicken;
+    @FXML private Label label_slot_cow;
 
     @FXML
     public void initialize() {
         updateMoney();
-        updateGraine();
+        updateSeed();
+        updateAnimal();
         startRandomEvents();
         setupHotbarDrag();
         setupFieldDrop();
-        if (argent > 1000) {
-            unlock.setDisable(false);
-        }
+        unlock();
     }
 
-    // ── NOUVEAU : mise à jour hotbar ──────────────────────────────
-    public void updateGraine() {
+    public void updateSeed() {
         label_slot_carrot.setText("🥕\n" + nb_carrots);
         label_slot_mais.setText("🌽\n" + nb_mais);
         label_slot_ble.setText("🌾\n" + nb_ble);
@@ -64,13 +71,25 @@ public class Land {
         slot_ble.setOpacity(nb_ble > 0 ? 1.0 : 0.4);
     }
 
-    private void setupHotbarDrag() {
-        setupSlotDrag(slot_carrot, "carrot");
-        setupSlotDrag(slot_mais, "mais");
-        setupSlotDrag(slot_ble, "ble");
+    public void updateAnimal() {
+        label_slot_sheep.setText("\uD83D\uDC37\n" + nb_sheep);
+        label_slot_chicken.setText("\uD83D\uDC14\n" + nb_chicken);
+        label_slot_cow.setText("\uD83D\uDC0E\n" + nb_cow);
+        slot_sheep.setOpacity(nb_sheep > 0 ? 1.0 : 0.4);
+        slot_chicken.setOpacity(nb_chicken > 0 ? 1.0 : 0.4);
+        slot_cow.setOpacity(nb_cow > 0 ? 1.0 : 0.4);
     }
 
-    private void setupSlotDrag(StackPane slot, String seedType) {
+    private void setupHotbarDrag() {
+        setupSlotDragSeed(slot_carrot, "carrot");
+        setupSlotDragSeed(slot_mais, "mais");
+        setupSlotDragSeed(slot_ble, "ble");
+        setupSlotDragAnimal(slot_sheep, "sheep");
+        setupSlotDragAnimal(slot_chicken, "chicken");
+        setupSlotDragAnimal(slot_cow, "cow");
+    }
+
+    private void setupSlotDragSeed(StackPane slot, String seedType) {
         slot.setOnDragDetected(event -> {
             int count = switch (seedType) {
                 case "carrot" -> nb_carrots;
@@ -82,6 +101,23 @@ public class Land {
             Dragboard db = slot.startDragAndDrop(TransferMode.COPY);
             ClipboardContent content = new ClipboardContent();
             content.putString(seedType);
+            db.setContent(content);
+            event.consume();
+        });
+    }
+
+    private void setupSlotDragAnimal(StackPane slot, String animalType) {
+        slot.setOnDragDetected(event -> {
+            int count = switch (animalType) {
+                case "sheep" -> nb_sheep;
+                case "chicken" -> nb_chicken;
+                case "cow" -> nb_cow;
+                default -> 0;
+            };
+            if (count <= 0) return;
+            Dragboard db = slot.startDragAndDrop(TransferMode.COPY);
+            ClipboardContent content = new ClipboardContent();
+            content.putString(animalType);
             db.setContent(content);
             event.consume();
         });
@@ -170,9 +206,6 @@ public class Land {
         }
     }
 
-    public void Dropped() {
-    }
-
     public void Hover(Pane cell) {
         cell.setOnDragEntered(dragEvent -> {
             if (Objects.equals(cell.getId(), "empty")) {
@@ -217,6 +250,8 @@ public class Land {
     public void unlock() {
         if (argent > 1000) {
             champ2.setDisable(false);
+            unlock.setDisable(true);
+            unlock.setVisible(false);
             argent -= 1000;
             updateMoney();
         }else {
@@ -228,7 +263,7 @@ public class Land {
         if (Objects.equals(cell.getId(), "empty")) {
             if (nb_carrots > 0) {
                 nb_carrots -= 1;
-                updateGraine();
+                updateSeed();
                 cell.setStyle("-fx-background-color: Green;");
                 cell.setId("planted_carrot");
                 if (boostGrowth) {
@@ -264,7 +299,7 @@ public class Land {
         if (Objects.equals(cell.getId(), "empty")) {
             if (nb_mais > 0) {
                 nb_mais -= 1;
-                updateGraine();
+                updateSeed();
                 cell.setStyle("-fx-background-color: Green;");
                 cell.setId("planted_mais");
                 if (boostGrowth) {
@@ -301,7 +336,7 @@ public class Land {
         if (Objects.equals(cell.getId(), "empty")) {
             if (nb_ble > 0) {
                 nb_ble -= 1;
-                updateGraine();
+                updateSeed();
                 cell.setStyle("-fx-background-color: Green;");
                 cell.setId("planted_ble");
                 if (boostGrowth) {

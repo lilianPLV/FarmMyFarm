@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.StackPane?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Land">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Land">
    <children>
       <Button fx:id="button_home" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="55.0" text="🏠">
          <font>
@@ -60,18 +60,11 @@
               <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
           </children>
       </GridPane>
-      <Label fx:id="money" layoutX="157.0" layoutY="21.0" text="MONEY" />
+      <Label fx:id="money" layoutX="322.0" layoutY="-1.0" prefHeight="31.0" text="...">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
       <Button fx:id="unlock" disable="true" layoutX="505.0" layoutY="82.0" mnemonicParsing="false" onAction="#unlock" prefHeight="25.0" prefWidth="103.0" text="Unlock for 1k" />
-      <Label layoutX="109.0" layoutY="19.0" text="Argent:">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button fx:id="button_animal" layoutX="505.0" mnemonicParsing="false" onAction="#animal" prefHeight="58.0" prefWidth="103.0" text="Animals">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Button>
        <GridPane fx:id="hotbar" gridLinesVisible="true" layoutX="92.0" layoutY="428.0" prefHeight="72.0" prefWidth="600.0">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -85,19 +78,35 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <children>
-               <StackPane fx:id="slot_carrot" id="slot_carrot" style="-fx-background-color: Grey;" GridPane.columnIndex="0">
-                   <Label fx:id="label_slot_carrot" text="🥕\n0" style="-fx-text-alignment: center;" />
+               <StackPane id="slot_carrot" fx:id="slot_carrot" style="-fx-background-color: Grey;" GridPane.columnIndex="0">
+                   <Label fx:id="label_slot_carrot" style="-fx-text-alignment: center;" text="🥕\n0" />
                </StackPane>
-               <StackPane fx:id="slot_mais" id="slot_mais" style="-fx-background-color: Grey;" GridPane.columnIndex="1">
-                   <Label fx:id="label_slot_mais" text="🌽\n0" style="-fx-text-alignment: center;" />
+               <StackPane id="slot_mais" fx:id="slot_mais" style="-fx-background-color: Grey;" GridPane.columnIndex="1">
+                   <Label fx:id="label_slot_mais" style="-fx-text-alignment: center;" text="🌽\n0" />
                </StackPane>
-               <StackPane fx:id="slot_ble" id="slot_ble" style="-fx-background-color: Grey;" GridPane.columnIndex="2">
-                   <Label fx:id="label_slot_ble" text="🌾\n0" style="-fx-text-alignment: center;" />
+               <StackPane id="slot_ble" fx:id="slot_ble" style="-fx-background-color: Grey;" GridPane.columnIndex="2">
+                   <Label fx:id="label_slot_ble" style="-fx-text-alignment: center;" text="🌾\n0" />
                </StackPane>
-               <Pane style="-fx-background-color: Grey;" GridPane.columnIndex="3" />
-               <Pane style="-fx-background-color: Grey;" GridPane.columnIndex="4" />
-               <Pane style="-fx-background-color: Grey;" GridPane.columnIndex="5" />
+               <StackPane id="slot_sheep" fx:id="slot_sheep" style="-fx-background-color: Grey;" GridPane.columnIndex="3">
+                   <Label fx:id="label_slot_sheep" style="-fx-text-alignment: center;" text="🐑\n0" />
+               </StackPane>
+               <StackPane id="slot_chicken" fx:id="slot_chicken" style="-fx-background-color: Grey;" GridPane.columnIndex="4">
+                   <Label fx:id="label_slot_chicken" style="-fx-text-alignment: center;" text="🐔\n0" />
+               </StackPane>
+               <StackPane id="slot_cow" fx:id="slot_cow" style="-fx-background-color: Grey;" GridPane.columnIndex="5">
+                   <Label fx:id="label_slot_cow" style="-fx-text-alignment: center;" text="🐄\n0" />
+               </StackPane>
            </children>
        </GridPane>
+      <GridPane gridLinesVisible="true" layoutX="64.0" layoutY="53.0" prefHeight="58.0" prefWidth="436.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
    </children>
 </Pane>
