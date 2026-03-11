@@ -14,7 +14,7 @@ public class Saves {
         Land.nb_mais_take = 0;
         Land.nb_ble = 0;
         Land.nb_ble_take = 0;
-        Land.argent = 100000;
+        Land.argent = 999999999;
         Land.nb_sheep = 0;
         Land.nb_chicken = 0;
         Land.nb_cow = 0;

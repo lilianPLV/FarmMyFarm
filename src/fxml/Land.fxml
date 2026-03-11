@@ -32,12 +32,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
           <children>
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
           </children>
       </GridPane>
       <GridPane fx:id="champ2" disable="true" gridLinesVisible="true" layoutX="412.0" layoutY="141.0" prefHeight="270.0" prefWidth="329.0">
@@ -52,12 +52,12 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
           <children>
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.rowIndex="1" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.rowIndex="2" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-              <Pane id="empty" onMouseClicked="#Planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.rowIndex="1" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.rowIndex="2" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+              <Pane id="empty" onMouseClicked="#planting" style="-fx-background-color: #693501;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
           </children>
       </GridPane>
       <Label fx:id="money" layoutX="322.0" layoutY="-1.0" prefHeight="31.0" text="...">

@@ -3,9 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShopController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ShopController">
    <children>
       <Button fx:id="button_acheter_carrot" layoutX="286.0" mnemonicParsing="false" onAction="#buy_carrot" prefHeight="36.0" prefWidth="106.0" text="Acheter">
          <font>
@@ -17,7 +18,10 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Label fx:id="shopMoney" layoutX="14.0" layoutY="220.0" />
+      <Label fx:id="shopMoney" layoutX="6.0" layoutY="207.0" text="Money">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
       <Button fx:id="button_sell_all_carrot" layoutX="523.0" mnemonicParsing="false" onAction="#sell_all_carrot" prefHeight="46.0" prefWidth="106.0" text="Vendre tout">
          <font>
             <Font size="15.0" />
@@ -58,7 +62,7 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="button_sell_all_ble" layoutX="523.0" layoutY="111.0" mnemonicParsing="false" onAction="#sell_all_ble" prefHeight="46.0" prefWidth="106.0" text="Vendre tout">
+      <Button fx:id="button_sell_all_ble" layoutX="523.0" layoutY="110.0" mnemonicParsing="false" onAction="#sell_all_ble" prefHeight="46.0" prefWidth="106.0" text="Vendre tout">
          <font>
             <Font size="15.0" />
          </font>
@@ -68,7 +72,7 @@
             <Font size="31.0" />
          </font>
       </Label>
-      <Button fx:id="button_home" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="55.0" text="🏠">
+      <Button fx:id="button_home" layoutX="-3.0" layoutY="-5.0" mnemonicParsing="false" onAction="#home" prefHeight="57.0" prefWidth="61.0" text="🏠">
          <font>
             <Font size="22.0" />
          </font>
@@ -121,17 +125,17 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Label layoutX="297.0" layoutY="348.0" text="Vache:">
+      <Label layoutX="294.0" layoutY="329.0" text="Vache:">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <Label layoutY="348.0" text="Mouton:">
+      <Label layoutX="-3.0" layoutY="329.0" text="Mouton:">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
-      <Label layoutX="159.0" layoutY="345.0" text="Poule:">
+      <Label layoutX="155.0" layoutY="329.0" text="Poule:">
          <font>
             <Font size="31.0" />
          </font>
@@ -141,7 +145,7 @@
             <Font size="22.0" />
          </font>
       </Button>
-      <Button fx:id="button_acheter_cow" layoutX="286.0" layoutY="396.0" mnemonicParsing="false" onAction="#buy_cow" prefHeight="46.0" prefWidth="106.0" text="Acheter">
+      <Button fx:id="button_acheter_cow" layoutX="286.0" layoutY="394.0" mnemonicParsing="false" onAction="#buy_cow" prefHeight="46.0" prefWidth="106.0" text="Acheter">
          <font>
             <Font size="22.0" />
          </font>
@@ -151,5 +155,36 @@
             <Font size="22.0" />
          </font>
       </Button>
+      <Button fx:id="button_acheter_boostchance" layoutX="523.0" layoutY="197.0" mnemonicParsing="false" onAction="#buy_boost_luck" prefHeight="36.0" prefWidth="106.0" text="Acheter">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Label layoutX="342.0" layoutY="197.0" text="Boost of luck for events: ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_cost_luck" layoutX="389.0" layoutY="216.0" text="cost">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_luck_actuel" layoutX="635.0" layoutY="210.0" text="Luck actuel">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_cost_carrot" layoutX="205.0" layoutY="34.0" text="cost" />
+      <Label fx:id="label_cost_mais" layoutX="205.0" layoutY="86.0" text="cost" />
+      <Label fx:id="label_cost_ble" layoutX="205.0" layoutY="148.0" text="cost" />
+      <Label fx:id="label_cost_sheep" layoutX="37.0" layoutY="375.0" text="cost" />
+      <Label fx:id="label_cost_chicken" layoutX="175.0" layoutY="375.0" text="cost" />
+      <Label fx:id="label_cost_cow" layoutX="314.0" layoutY="375.0" text="cost" />
+      <Label fx:id="shop_nb_sheep" layoutX="37.0" layoutY="312.0" text="MOUT" />
+      <Label fx:id="shop_nb_chicken" layoutX="184.0" layoutY="312.0" text="CHIC" />
+      <Label fx:id="shop_nb_cow" layoutX="325.0" layoutY="312.0" text="COW" />
+      <Line endX="756.0" layoutX="14.0" layoutY="166.0" startX="-14.0" />
+      <Line endX="395.0" layoutX="375.0" layoutY="286.0" startX="-375.0" />
    </children>
 </Pane>
