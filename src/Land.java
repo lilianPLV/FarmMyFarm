@@ -69,6 +69,11 @@ public class Land {
     @FXML
     public void initialize() {
         Saves.load(this);
+        background.setStyle(
+                "-fx-background-image: url('" + getClass().getResource("/Images/background.png") + "');" +
+                        "-fx-background-size: cover;" +
+                        "-fx-background-repeat: no-repeat;"
+        );
         updateInv();
         updateMoney();
         updateSeed();
@@ -188,12 +193,12 @@ public class Land {
     }
 
     public void updateInv() {
-        label_carrot_taken.setText("Carottes récupérer: " + nb_carrots_take);
-        label_mais_taken.setText("Mais récupérer: " + nb_mais_take);
-        label_ble_taken.setText("Blés récupérer: " + nb_ble_take);
-        label_nb_laine.setText("Nombre de laines récupérer: " + nb_laine);
-        label_nb_egg.setText("Nombre d'oeufs récupérer: " + nb_egg);
-        label_nb_lait.setText("Nombre de laits récupérer: " + nb_lait);
+        label_carrot_taken.setText("Carottes récupérés: " + nb_carrots_take);
+        label_mais_taken.setText("Mais récupérés: " + nb_mais_take);
+        label_ble_taken.setText("Blés récupérés: " + nb_ble_take);
+        label_nb_laine.setText("Nombre de laines récupérés: " + nb_laine);
+        label_nb_egg.setText("Nombre d'oeufs récupérés: " + nb_egg);
+        label_nb_lait.setText("Nombre de laits récupérés: " + nb_lait);
     }
 
     public void setupHotbar() {

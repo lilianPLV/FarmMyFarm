@@ -316,6 +316,7 @@ public class ShopController {
             Land.nb_carrots_take -= 1;
             Land.argent += 12 + bonus;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -330,6 +331,7 @@ public class ShopController {
             Land.nb_mais_take -= 1;
             Land.argent += 57 + bonus;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -344,6 +346,7 @@ public class ShopController {
             Land.nb_ble_take -= 1;
             Land.argent += 160 + bonus;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -358,6 +361,7 @@ public class ShopController {
             Land.nb_laine -= 1;
             Land.argent += 200 + bonus;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -372,6 +376,7 @@ public class ShopController {
             Land.nb_egg -= 1;
             Land.argent += 250 + bonus;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -386,6 +391,7 @@ public class ShopController {
             Land.nb_lait -= 1;
             Land.argent += 275 + bonus;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -400,6 +406,7 @@ public class ShopController {
             Land.argent += Land.nb_carrots_take * 5;
             Land.nb_carrots_take = 0;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -413,6 +420,7 @@ public class ShopController {
             Land.argent += Land.nb_mais_take * 12;
             Land.nb_mais_take = 0;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -426,6 +434,7 @@ public class ShopController {
             Land.argent += Land.nb_ble_take * 61;
             Land.nb_ble_take = 0;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -439,6 +448,7 @@ public class ShopController {
             Land.argent += Land.nb_laine * 5;
             Land.nb_laine = 0;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -452,6 +462,7 @@ public class ShopController {
             Land.argent += Land.nb_egg * 5;
             Land.nb_egg = 0;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -465,6 +476,7 @@ public class ShopController {
             Land.argent += Land.nb_lait * 5;
             Land.nb_lait = 0;
             land.updateMoney();
+            land.updateInv();
             updateShopMoney();
             updateShopGraine();
         }
@@ -479,6 +491,7 @@ public class ShopController {
             land.updateAnimal();
             land.updateSeed();
             land.updateMoney();
+            land.updateInv();
             stage.close();
         });
     }
