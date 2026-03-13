@@ -8,12 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.scene.image.Image;
+import java.awt.*;
 import java.sql.Timestamp;
 import java.util.Objects;
 import java.util.Random;
@@ -56,9 +59,17 @@ public class Land {
     @FXML private Label label_slot_chicken;
     @FXML private Label label_slot_cow;
     @FXML private GridPane etable;
+    @FXML private Pane background;
+    @FXML private Label label_carrot_taken;
+    @FXML private Label label_mais_taken;
+    @FXML private Label label_ble_taken;
+    @FXML private Label label_nb_laine;
+    @FXML private Label label_nb_egg;
+    @FXML private Label label_nb_lait;
     @FXML
     public void initialize() {
         Saves.load(this);
+        updateInv();
         updateMoney();
         updateSeed();
         updateAnimal();
@@ -176,6 +187,15 @@ public class Land {
         money.setText("Money: " + argent);
     }
 
+    public void updateInv() {
+        label_carrot_taken.setText("Carottes récupérer: " + nb_carrots_take);
+        label_mais_taken.setText("Mais récupérer: " + nb_mais_take);
+        label_ble_taken.setText("Blés récupérer: " + nb_ble_take);
+        label_nb_laine.setText("Nombre de laines récupérer: " + nb_laine);
+        label_nb_egg.setText("Nombre d'oeufs récupérer: " + nb_egg);
+        label_nb_lait.setText("Nombre de laits récupérer: " + nb_lait);
+    }
+
     public void setupHotbar() {
         setupSlotDragSeed(slot_carrot, "carrot");
         setupSlotDragSeed(slot_mais, "mais");
@@ -224,15 +244,18 @@ public class Land {
         deleteAnimalCell(cell);
         if (Objects.equals(cell.getId(), "ready_sheep")) {
             nb_laine += 1;
-            cell.setStyle("-fx-background-color: Red;");
+            updateInv();
+            setupImage(cell, loadImage("/Images/mouton_idle.png"));
             cell.setId("wait_animal_sheep");
         } else if (Objects.equals(cell.getId(), "ready_chicken")) {
             nb_egg += 1;
-            cell.setStyle("-fx-background-color: Red;");
+            updateInv();
+            setupImage(cell, loadImage("/Images/poule_idle.png"));
             cell.setId("wait_animal_chicken");
         } else if (Objects.equals(cell.getId(), "ready_cow")) {
             nb_lait += 1;
-            cell.setStyle("-fx-background-color: Red;");
+            updateInv();
+            setupImage(cell, loadImage("/Images/vache_idle.png"));
             cell.setId("wait_animal_cow");
         }
     }
@@ -338,6 +361,23 @@ public class Land {
         });
     }
 
+    public void setupImage(Pane cell, Image image) {
+        cell.getChildren().removeIf(node -> node instanceof ImageView);
+        ImageView imageView = new ImageView(image);
+        imageView.fitWidthProperty().bind(cell.widthProperty());
+        imageView.fitHeightProperty().bind(cell.heightProperty());
+        imageView.setPreserveRatio(false);
+        imageView.setMouseTransparent(true);    //permet de cliquer a travers
+        imageView.setPickOnBounds(false);
+        cell.getChildren().add(imageView);
+    }
+
+    public Image loadImage(String path) {
+        return new Image(Objects.requireNonNull(
+                getClass().getResourceAsStream(path)
+        ));
+    }
+
     public void startRandomEvents() {
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(30), event -> {
@@ -366,17 +406,20 @@ public class Land {
         Pane cell = (Pane) mouseEvent.getSource();
         Hover(cell);
         if (Objects.equals(cell.getId(), "ready_carrot")) {
-            cell.setStyle("-fx-background-color: #693501;");
+            setupImage(cell, loadImage("/Images/empty_plot.png"));
             cell.setId("empty");
             nb_carrots_take += 1;
+            updateInv();
         } if (Objects.equals(cell.getId(), "ready_mais")) {
-            cell.setStyle("-fx-background-color: #693501;");
+            setupImage(cell, loadImage("/Images/empty_plot.png"));
             cell.setId("empty");
             nb_mais_take += 1;
+            updateInv();
         } if (Objects.equals(cell.getId(), "ready_ble")) {
-            cell.setStyle("-fx-background-color: #693501;");
+            setupImage(cell, loadImage("/Images/empty_plot.png"));
             cell.setId("empty");
             nb_ble_take += 1;
+            updateInv();
         }
     }
 
@@ -433,13 +476,13 @@ public class Land {
             if (nb_carrots > 0) {
                 nb_carrots -= 1;
                 updateSeed();
-                cell.setStyle("-fx-background-color: Green;");
+                setupImage(cell, loadImage("/Images/carrot_start.png"));
                 cell.setId("planted_carrot");
                 if (boost_Growth) {
                     PauseTransition pause = new PauseTransition(Duration.seconds(2));
                     pause.setOnFinished(event -> {
                         if (Objects.equals(cell.getId(), "planted_carrot")) {
-                            cell.setStyle("-fx-background-color: Yellow;");
+                            setupImage(cell, loadImage("/Images/carrot_full.png"));
                             cell.setId("ready_carrot");
                         }
                     });
@@ -448,7 +491,7 @@ public class Land {
                     PauseTransition pause = new PauseTransition(Duration.seconds(4));
                     pause.setOnFinished(event -> {
                         if (Objects.equals(cell.getId(), "planted_carrot")) {
-                            cell.setStyle("-fx-background-color: Yellow;");
+                            setupImage(cell, loadImage("/Images/carrot_full.png"));
                             cell.setId("ready_carrot");
                         }
                     });
@@ -457,10 +500,11 @@ public class Land {
             } else {
                 System.out.println("Pas assez de graines de carrots");
             }
-        } if (Objects.equals(cell.getId(), "ready")) {
-            cell.setStyle("-fx-background-color: #693501;");
+        } if (Objects.equals(cell.getId(), "ready_carrot")) {
+            setupImage(cell, loadImage("/Images/empty.png"));
             cell.setId("empty");
             nb_carrots_take += 1;
+            updateInv();
         }
     }
 
@@ -469,13 +513,13 @@ public class Land {
             if (nb_mais > 0) {
                 nb_mais -= 1;
                 updateSeed();
-                cell.setStyle("-fx-background-color: Green;");
+                setupImage(cell, loadImage("/Images/mais_start.png"));
                 cell.setId("planted_mais");
                 if (boost_Growth) {
                     PauseTransition pause = new PauseTransition(Duration.seconds(5));
                     pause.setOnFinished(event -> {
                         if (Objects.equals(cell.getId(), "planted_mais")) {
-                            cell.setStyle("-fx-background-color: Yellow;");
+                            setupImage(cell, loadImage("/Images/mais_full.png"));
                             cell.setId("ready_mais");
                         }
                     });
@@ -484,7 +528,7 @@ public class Land {
                     PauseTransition pause = new PauseTransition(Duration.seconds(10));
                     pause.setOnFinished(event -> {
                         if (Objects.equals(cell.getId(), "planted_mais")) {
-                            cell.setStyle("-fx-background-color: Yellow;");
+                            setupImage(cell, loadImage("/Images/mais_full.png"));
                             cell.setId("ready_mais");
                         }
                     });
@@ -494,10 +538,11 @@ public class Land {
                 System.out.println("Pas assez de graines de mais");
             }
         }
-        if (Objects.equals(cell.getId(), "ready")) {
-            cell.setStyle("-fx-background-color: #693501;");
+        if (Objects.equals(cell.getId(), "ready_mais")) {
+            setupImage(cell, loadImage("/Images/empty_plot.png"));
             cell.setId("empty");
             nb_mais_take += 1;
+            updateInv();
         }
     }
 
@@ -506,13 +551,13 @@ public class Land {
             if (nb_ble > 0) {
                 nb_ble -= 1;
                 updateSeed();
-                cell.setStyle("-fx-background-color: Green;");
+                setupImage(cell, loadImage("/Images/ble_start.png"));
                 cell.setId("planted_ble");
                 if (boost_Growth) {
                     PauseTransition pause = new PauseTransition(Duration.seconds(10));
                     pause.setOnFinished(event -> {
                         if (Objects.equals(cell.getId(), "planted_ble")) {
-                            cell.setStyle("-fx-background-color: Yellow;");
+                            setupImage(cell, loadImage("/Images/ble_full.png"));
                             cell.setId("ready_ble");
                         }
                     });
@@ -521,7 +566,7 @@ public class Land {
                     PauseTransition pause = new PauseTransition(Duration.seconds(20));
                     pause.setOnFinished(event -> {
                         if (Objects.equals(cell.getId(), "planted_ble")) {
-                            cell.setStyle("-fx-background-color: Yellow;");
+                            setupImage(cell, loadImage("/Images/ble_full.png"));
                             cell.setId("ready_ble");
                         }
                     });
@@ -531,10 +576,11 @@ public class Land {
                 System.out.println("Pas assez de graines de ble");
             }
         }
-        if (Objects.equals(cell.getId(), "ready")) {
-            cell.setStyle("-fx-background-color: #693501;");
+        if (Objects.equals(cell.getId(), "ready_ble")) {
+            setupImage(cell, loadImage("/Images/empty_plot.png"));
             cell.setId("empty");
             nb_ble_take += 1;
+            updateInv();
         }
     }
 
@@ -543,7 +589,7 @@ public class Land {
             if (nb_sheep > 0) {
                 nb_sheep -= 1;
                 updateAnimal();
-                cell.setStyle("-fx-background-color: Red;");
+                setupImage(cell, loadImage("/Images/mouton_idle.png"));
                 cell.setId("wait_animal_sheep");
             }
         }
@@ -554,7 +600,7 @@ public class Land {
             if (nb_chicken > 0) {
                 nb_chicken -= 1;
                 updateAnimal();
-                cell.setStyle("-fx-background-color: Red;");
+                setupImage(cell, loadImage("/Images/poule_idle.png"));
                 cell.setId("wait_animal_chicken");
             }
         }
@@ -565,7 +611,7 @@ public class Land {
             if (nb_cow > 0) {
                 nb_cow -= 1;
                 updateAnimal();
-                cell.setStyle("-fx-background-color: Red;");
+                setupImage(cell, loadImage("/Images/vache_idle.png"));
                 cell.setId("wait_animal_cow");
             }
         }
@@ -575,13 +621,14 @@ public class Land {
         if (cell.getId().equals("wait_animal_sheep")) {
             nb_carrots -= 1;
             updateSeed();
-            cell.setStyle("-fx-background-color: Green;");
+            setupImage(cell, loadImage("/Images/mouton_start.png"));
             cell.setId("animal_sheep");
             if (boost_Growth) {
                 PauseTransition pause = new PauseTransition(Duration.seconds(30));
                 pause.setOnFinished(e -> {
                     if (Objects.equals(cell.getId(), "animal_sheep")) {
-                        cell.setStyle("-fx-background-color: Yellow;");
+                        setupImage(cell, loadImage("/Images/mouton_full.png"));
+                        cell.setStyle("-fx-background-color: Yellow");
                         cell.setId("ready_sheep");
                     }
                 });
@@ -590,7 +637,8 @@ public class Land {
                 PauseTransition pause = new PauseTransition(Duration.seconds(90));
                 pause.setOnFinished(e -> {
                     if (Objects.equals(cell.getId(), "animal_sheep")) {
-                        cell.setStyle("-fx-background-color: Yellow;");
+                        setupImage(cell, loadImage("/Images/mouton_full.png"));
+                        cell.setStyle("-fx-background-color: Yellow");
                         cell.setId("ready_sheep");
                     }
                 });
@@ -603,13 +651,14 @@ public class Land {
         if (cell.getId().equals("wait_animal_chicken")) {
             nb_mais -= 1;
             updateSeed();
-            cell.setStyle("-fx-background-color: Green;");
+            setupImage(cell, loadImage("/Images/poule_start.png"));
             cell.setId("animal_chicken");
             if (boost_Growth) {
                 PauseTransition pause = new PauseTransition(Duration.seconds(120));
                 pause.setOnFinished(e -> {
                     if (Objects.equals(cell.getId(), "animal_chicken")) {
-                        cell.setStyle("-fx-background-color: Yellow;");
+                        setupImage(cell, loadImage("/Images/poule_full.png"));
+                        cell.setStyle("-fx-background-color: Yellow");
                         cell.setId("ready_chicken");
                     }
                 });
@@ -618,7 +667,8 @@ public class Land {
                 PauseTransition pause = new PauseTransition(Duration.seconds(180));
                 pause.setOnFinished(e -> {
                     if (Objects.equals(cell.getId(), "animal_chicken")) {
-                        cell.setStyle("-fx-background-color: Yellow;");
+                        setupImage(cell, loadImage("/Images/poule_full.png"));
+                        cell.setStyle("-fx-background-color: Yellow");
                         cell.setId("ready_chicken");
                     }
                 });
@@ -632,13 +682,14 @@ public class Land {
         if (cell.getId().equals("wait_animal_cow")) {
             nb_ble -= 1;
             updateSeed();
-            cell.setStyle("-fx-background-color: Green;");
+            setupImage(cell, loadImage("/Images/vache_start.png"));
             cell.setId("animal_cow");
             if (boost_Growth) {
                 PauseTransition pause = new PauseTransition(Duration.seconds(240));
                 pause.setOnFinished(e -> {
                     if (Objects.equals(cell.getId(), "animal_cow")) {
-                        cell.setStyle("-fx-background-color: Yellow;");
+                        setupImage(cell, loadImage("/Images/vache_full.png"));
+                        cell.setStyle("-fx-background-color: Yellow");
                         cell.setId("ready_cow");
                     }
                 });
@@ -647,7 +698,8 @@ public class Land {
                 PauseTransition pause = new PauseTransition(Duration.seconds(300));
                 pause.setOnFinished(e -> {
                     if (Objects.equals(cell.getId(), "animal_cow")) {
-                        cell.setStyle("-fx-background-color: Yellow;");
+                        setupImage(cell, loadImage("/Images/vache_full.png"));
+                        cell.setStyle("-fx-background-color: Yellow");
                         cell.setId("ready_cow");
                     }
                 });

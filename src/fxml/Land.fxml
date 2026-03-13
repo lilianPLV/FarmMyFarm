@@ -9,16 +9,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Land">
+<Pane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="770.0" style="-fx-background-color: White;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Land">
    <children>
       <Button fx:id="button_home" layoutY="-14.0" mnemonicParsing="false" onAction="#home" prefHeight="58.0" prefWidth="55.0" text="🏠">
          <font>
             <Font size="22.0" />
-         </font>
-      </Button>
-      <Button fx:id="button_shop" layoutX="675.0" layoutY="-13.0" mnemonicParsing="false" onAction="#shop" text="Shop">
-         <font>
-            <Font size="26.0" />
          </font>
       </Button>
       <GridPane fx:id="champ1" gridLinesVisible="true" layoutX="40.0" layoutY="141.0" prefHeight="270.0" prefWidth="329.0">
@@ -121,10 +116,30 @@
               <Pane id="empty" onMouseClicked="#Animaling" style="-fx-background-color: #693501;" GridPane.columnIndex="5" GridPane.rowIndex="0" />
           </children>
       </GridPane>
-      <Button fx:id="button_save" layoutX="-1.0" layoutY="453.0" mnemonicParsing="false" text="Saves" onAction="#saveGame">
+      <Button fx:id="button_save" layoutX="-1.0" layoutY="453.0" mnemonicParsing="false" onAction="#saveGame" text="Saves">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
+      <Pane layoutX="770.0" layoutY="-3.0" prefHeight="506.0" prefWidth="200.0" style="-fx-background-color: White;">
+         <children>
+            <Label fx:id="label_carrot_taken" layoutX="14.0" layoutY="50.0" text="carrot_taken" />
+            <Label fx:id="label_mais_taken" layoutX="14.0" layoutY="80.0" text="mais_taken" />
+            <Label fx:id="label_ble_taken" layoutX="14.0" layoutY="110.0" text="ble_taken" />
+            <Label layoutX="52.0" text="Inventaire" underline="true">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="label_nb_laine" layoutX="14.0" layoutY="140.0" text="nb_laine" />
+            <Label fx:id="label_nb_lait" layoutX="14.0" layoutY="200.0" text="nb_lait" />
+            <Label fx:id="label_nb_egg" layoutX="14.0" layoutY="170.0" text="nb_egg" />
+            <Button fx:id="button_shop" layoutX="105.0" layoutY="450.0" mnemonicParsing="false" onAction="#shop" prefHeight="56.0" prefWidth="100.0" text="Shop">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </Pane>

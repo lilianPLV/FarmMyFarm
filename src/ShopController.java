@@ -144,7 +144,6 @@ public class ShopController {
             if (Land.argent > increase + 10) {
                 Land.luck_boost += 1;
                 Land.argent -= increase;
-                System.out.println(Land.luck_boost);
                 updateIncrease();
                 updateCostIncrease();
                 updateShopMoney();
